@@ -8,7 +8,10 @@ import CalcButton from './CalcButton';
 import reducer, { initialState } from "../reducers";
 //import { addOne } from "../actions";
 import { applyNumber } from "../actions";
-import { changeOperation } from "../actions"
+import { changeOperation } from "../actions";
+import { clearDisplay } from "../actions";
+
+
 function App() {
   const [ state, dispatch ] = useReducer (reducer, initialState);
  
@@ -16,10 +19,13 @@ function App() {
     dispatch(addOne());
   }*/
   const handleClickNumber = (number) =>{
-    dispatch(applyNumber(number))
+    dispatch(applyNumber(number));
   }
   const handleClickOperator = (operator) =>{
-    dispatch(changeOperation(operator))
+    dispatch(changeOperation(operator));
+  }
+  const handleClickClear = () => {
+    dispatch(clearDisplay());
   }
 
 
@@ -70,7 +76,7 @@ function App() {
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"}/>
+              <CalcButton value={"CE"} onClick={handleClickClear}/>
             </div>
 
           </form>
