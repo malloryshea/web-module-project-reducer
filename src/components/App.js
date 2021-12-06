@@ -7,9 +7,8 @@ import CalcButton from './CalcButton';
 
 import reducer, { initialState } from "../reducers";
 //import { addOne } from "../actions";
-import { applyNumber } from "../actions";
-import { changeOperation } from "../actions";
-import { clearDisplay } from "../actions";
+import { applyNumber, changeOperation, clearDisplay, addMemory, recallMemory, clearMemory  } from "../actions";
+
 
 
 function App() {
@@ -27,7 +26,15 @@ function App() {
   const handleClickClear = () => {
     dispatch(clearDisplay());
   }
-
+  const handleClickAddMemory =() => {
+    dispatch(addMemory());
+  }
+  const handleClickRecallMemory =() => {
+    dispatch(recallMemory());
+  }
+  const handleClickClearMemory =() => {
+    dispatch(clearMemory());
+  }
 
   return (
     <div className="App">
@@ -46,9 +53,9 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"M+"}onClick={handleClickAddMemory}/>
+              <CalcButton value={"MR"}onClick={handleClickRecallMemory}/>
+              <CalcButton value={"MC"}onClick={handleClickClearMemory}/>
             </div>
 
             <div className="row">
